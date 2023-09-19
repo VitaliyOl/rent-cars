@@ -8,9 +8,11 @@ function Layout() {
   return (
     <main style={{ width: '1440px', marginLeft: 'auto', marginRight: 'auto' }}>
       <NavBar />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <div style={{ padding: '150px 128px' }}>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </div>
     </main>
   );
 }

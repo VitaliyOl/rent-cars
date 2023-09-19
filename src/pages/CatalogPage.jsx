@@ -1,21 +1,23 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { selectCars } from '../redux/Cars/selector';
 import { fetchCars } from '../redux/Cars/operations';
+import CardList from 'components/CardList/CardList';
+
+import { useSelector } from 'react-redux';
+import { selectCars } from '../redux/Cars/selector';
 
 function CatalogPage() {
+  const allCars = useSelector(selectCars);
   const dispatch = useDispatch();
-  const cars = useSelector(selectCars);
 
   useEffect(() => {
     dispatch(fetchCars());
   }, [dispatch]);
 
-  console.log(cars);
   return (
     <div>
-      <h1>CatalogPage</h1>
+      <CardList cars={allCars} />
     </div>
   );
 }

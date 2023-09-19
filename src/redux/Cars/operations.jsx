@@ -8,7 +8,6 @@ export const fetchCars = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios('/cars');
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

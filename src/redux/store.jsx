@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { carsReducer } from './Cars/slice';
+import { favoriteReducer } from './Favorites/slice';
 
 const persistConfig = {
   key: 'root',
@@ -20,7 +21,10 @@ const persistConfig = {
 };
 
 export const store = configureStore({
-  reducer: persistReducer(persistConfig, carsReducer),
+  reducer: {
+    cars: persistReducer(persistConfig, carsReducer),
+    favorite: favoriteReducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

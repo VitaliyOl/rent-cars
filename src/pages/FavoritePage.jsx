@@ -1,11 +1,11 @@
-import React from 'react';
+import CardList from 'components/CardList/CardList';
+import { useSelector } from 'react-redux';
+import { selectFavorite } from 'redux/Favorites/selector';
 
 function FavoritePage() {
-  return (
-    <div>
-      <h1>FavoritePage</h1>
-    </div>
-  );
+  const favoriteCars = useSelector(selectFavorite);
+
+  return <CardList cars={favoriteCars} />;
 }
 
 export default FavoritePage;

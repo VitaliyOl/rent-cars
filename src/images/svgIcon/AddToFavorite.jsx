@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 
-export const AddToFavoriteIcon = ({ id, className, fill }) => {
+export const AddToFavoriteIcon = ({ id, fill }) => {
   switch (id) {
     case 'svg':
       return (
         <svg
-          className={className}
           width="20"
           height="18"
           viewBox="0 0 20 18"
