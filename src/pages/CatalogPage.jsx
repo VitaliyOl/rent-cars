@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { fetchCars } from '../redux/Cars/operations';
 import CardList from 'components/CardList/CardList';
+import Filter from 'components/Filter/Filter';
 
 import { useSelector } from 'react-redux';
 import { selectCars } from '../redux/Cars/selector';
@@ -17,6 +18,7 @@ function CatalogPage() {
 
   return (
     <div>
+      <Filter />
       <CardList cars={allCars} />
     </div>
   );

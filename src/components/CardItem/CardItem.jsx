@@ -12,14 +12,19 @@ import {
 } from './CardItem.styled';
 
 import { removeFavorites, setFavorites } from '../../redux/Favorites/slice';
+import noImage from '../../images/no-image.png';
 
 import { selectFavorite } from '../../redux/Favorites/selector';
+import Modal from 'components/Modal/Modal';
+import useModal from '../../hooks/useModal';
+import CarDetails from 'components/Modal/CarDetails';
 
 function CardItem({ data }) {
+  const { isOpen, openModal, closeModal } = useModal();
   const favorites = useSelector(selectFavorite);
   const dispatch = useDispatch();
 
-  const isFavorite = favorites?.some(favCar => favCar.id === data.id);
+  const isFavorite = favorites?.some(el => el.id === data.id);
 
   const handleFavorite = () => {
     return isFavorite
@@ -54,7 +59,11 @@ function CardItem({ data }) {
     <>
       <CardList>
         <ImgContainer>
-          <Img src={img ? img : ''} alt={`${make} ${model}`} loading="lazy" />
+          <Img
+            src={img ? img : noImage}
+            alt={`${make} ${model}`}
+            loading="lazy"
+          />
           <Favorite type="button" onClick={handleFavorite}>
             <AddToFavoriteIcon
               id="svg"
@@ -71,7 +80,12 @@ function CardItem({ data }) {
           </Title>
         </TitleContainer>
         <TextItem>{charachteristics.join(' | ')}</TextItem>
-        <CardButton>Learn More</CardButton>
+        <CardButton onClick={openModal}>Learn More</CardButton>
+        {isOpen && (
+          <Modal isOpen={isOpen} onClose={closeModal}>
+            <CarDetails car={data} />
+          </Modal>
+        )}
       </CardList>
     </>
   );
