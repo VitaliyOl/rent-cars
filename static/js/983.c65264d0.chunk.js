@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrent_cars=self.webpackChunkrent_cars||[]).push([[983],{983:function(e,n,r){r.r(n);r(791);var c=r(329);n.default=function(){return(0,c.jsx)("div",{children:(0,c.jsx)("h1",{children:"home page"})})}}}]);
-//# sourceMappingURL=983.c65264d0.chunk.js.map
