@@ -18,13 +18,13 @@ import { filterReducer } from './Filter/slice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['items'],
+  whitelist: ['items', 'favorites'],
 };
 
 export const store = configureStore({
   reducer: {
     cars: persistReducer(persistConfig, carsReducer),
-    favorite: favoriteReducer,
+    favorite: persistReducer(persistConfig, favoriteReducer),
     filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
